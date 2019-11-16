@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "epicplanes",
+  "version": "${version}",
+  "name": "Epic Planes",
+  "description": "Epic Planes fly Epicly",
+  "authors": [
+    "Ibraheem Rodrigues"
+  ],
+  "contact": {
+    "homepage": "https://ibraheemrodrigues.com/",
+    "source": "https://github.com/IbraheemR/epicplanes"
+  },
+  "license": "MIT",
+  "icon": "assets/epicplanes/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.ibraheemrodrigues.epicplanes.Main"
+    ],
+    "client": [
+      "com.ibraheemrodrigues.epicplanes.MainClient"
+    ]
+  },
+  "mixins": [
+    "epicplanes.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.4.0",
+    "fabric": "*"
+  },
+  "suggests": {
+    "flamingo": "*"
+  }
+}
