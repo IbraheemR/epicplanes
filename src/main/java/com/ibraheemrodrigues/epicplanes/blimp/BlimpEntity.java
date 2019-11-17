@@ -4,6 +4,7 @@ import com.ibraheemrodrigues.epicplanes.Util;
 
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.entity.FabricEntityTypeBuilder;
+import net.minecraft.client.render.entity.BoatEntityRenderer;
 import net.minecraft.entity.EntityCategory;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
@@ -25,6 +26,6 @@ public class BlimpEntity extends BoatEntity {
     }
 
     public static final void clientInit() {
-        EntityRendererRegistry.INSTANCE.register(BLIMP, (dispatcher, context) -> new BlimpEntityRenderer(dispatcher));
+        EntityRendererRegistry.INSTANCE.register(BLIMP, (dispatcher, context) -> new BoatEntityRenderer(dispatcher));
     }
 }

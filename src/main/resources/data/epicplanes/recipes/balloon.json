@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#L#",
+        "LGL",
+        "#L#"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:string"
+        },
+        "L": {
+            "item": "minecraft:leather"
+        },
+        "G": {
+            "item": "minecraft:ghast_tear"
+        }
+    },
+    "result": {
+        "item": "epicplanes:balloon",
+        "count": 1
+    }
+}

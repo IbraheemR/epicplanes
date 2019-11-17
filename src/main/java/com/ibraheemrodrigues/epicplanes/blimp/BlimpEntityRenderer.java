@@ -29,7 +29,7 @@ public class BlimpEntityRenderer extends EntityRenderer<BlimpEntity> {
 
     @Override
     public Identifier getTexture(BlimpEntity BlimpEntity) {
-        return new Identifier("minecraft:textures/entity/boat/oak.png");
+        return new Identifier("minecraft:texstures/entity/boat/oak.png");
     }
 
     @Override
