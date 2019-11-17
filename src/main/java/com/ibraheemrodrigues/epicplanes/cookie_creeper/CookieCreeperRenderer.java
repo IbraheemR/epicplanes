@@ -13,7 +13,7 @@ public class CookieCreeperRenderer
     }
 
     @Override
-    protected Identifier getTexture(CookieCreeperEntity cookieCreeperEntity) {
+    public Identifier getTexture(CookieCreeperEntity cookieCreeperEntity) {
         return new Identifier("epicplanes:textures/entity/cookie_creeper.png");
     }
 

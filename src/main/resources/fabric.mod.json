@@ -23,7 +23,7 @@
     ]
   },
   "mixins": [
-    "epicplanes.mixins.json"
+    "cookiecreeper.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.4.0",

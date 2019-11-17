@@ -1,6 +1,6 @@
 {
     "required": true,
-    "package": "com.ibraheemrodrigues.epicplanes.mixin",
+    "package": "com.ibraheemrodrigues.epicplanes.cookie_creeper.mixin",
     "compatibilityLevel": "JAVA_8",
     "mixins": [
         "CookieCreeperMixin"

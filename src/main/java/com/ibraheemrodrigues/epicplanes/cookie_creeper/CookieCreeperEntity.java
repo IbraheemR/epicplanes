@@ -1,12 +1,13 @@
 package com.ibraheemrodrigues.epicplanes.cookie_creeper;
 
-import net.fabricmc.fabric.api.client.render.EntityRendererRegistry;
+import com.ibraheemrodrigues.epicplanes.Util;
+
+import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.EntityCategory;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.mob.CreeperEntity;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 // import com.ibraheemrodrigues.epicplanes.Util;
@@ -17,8 +18,7 @@ public class CookieCreeperEntity extends CreeperEntity {
     }
 
     public static final EntityType<CookieCreeperEntity> COOKIE_CREEPER = Registry.register(Registry.ENTITY_TYPE,
-            new Identifier("epicplanes", "cookie_creeper"),
-            FabricEntityTypeBuilder.create(EntityCategory.AMBIENT, CookieCreeperEntity::new)
+            Util.Id("cookie_creeper"), FabricEntityTypeBuilder.create(EntityCategory.MONSTER, CookieCreeperEntity::new)
                     .size(EntityDimensions.fixed(1, 2)).build());
 
     public static final void init() {
@@ -26,13 +26,7 @@ public class CookieCreeperEntity extends CreeperEntity {
     }
 
     public static final void clientInit() {
-        EntityRendererRegistry.INSTANCE.register(CookieCreeperEntity.class,
+        EntityRendererRegistry.INSTANCE.register(COOKIE_CREEPER,
                 (entityRenderDispatcher, context) -> new CookieCreeperRenderer(entityRenderDispatcher));
     }
-
-    public void tick() {
-        super.tick();
-        // System.out.println(this.getHealth());
-    }
-
 }

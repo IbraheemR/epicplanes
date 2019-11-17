@@ -1,4 +1,4 @@
-package com.ibraheemrodrigues.epicplanes.mixin;
+package com.ibraheemrodrigues.epicplanes.cookie_creeper.mixin;
 
 import java.util.List;
 
@@ -69,7 +69,10 @@ public class CookieCreeperMixin extends HostileEntity {
 
                         CookieCreeperEntity cookieCreeperEntity = (CookieCreeperEntity) CookieCreeperEntity.COOKIE_CREEPER
                                 .create(this.world);
-                        cookieCreeperEntity.setPositionAndAngles(this.x, this.y, this.z, this.yaw, this.pitch);
+
+                        Vec3d pos = getPos();
+
+                        cookieCreeperEntity.setPositionAndAngles(pos.x, pos.y, pos.z, this.yaw, this.pitch);
                         cookieCreeperEntity.setAiDisabled(this.isAiDisabled());
                         if (this.hasCustomName()) {
                             cookieCreeperEntity.setCustomName(this.getCustomName());
@@ -80,7 +83,7 @@ public class CookieCreeperMixin extends HostileEntity {
                                 .getBoolean(GameRules.MOB_GRIEFING) ? Explosion.DestructionType.DESTROY
                                         : Explosion.DestructionType.NONE;
 
-                        this.world.createExplosion(this, this.x, this.y, this.z, 3.0f, destruction);
+                        this.world.createExplosion(this, pos.x, pos.y, pos.z, 3.0f, destruction);
 
                         this.world.spawnEntity(cookieCreeperEntity);
 
