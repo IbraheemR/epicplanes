@@ -2,8 +2,8 @@ package com.ibraheemrodrigues.epicplanes;
 
 import net.fabricmc.api.ModInitializer;
 
-import com.ibraheemrodrigues.epicplanes.blimp.BlimpEntity;
-import com.ibraheemrodrigues.epicplanes.cookie_creeper.CookieCreeperEntity;
+import com.ibraheemrodrigues.epicplanes.entity.PlaneEntities;
+import com.ibraheemrodrigues.epicplanes.item.PlaneItems;
 
 public class Main implements ModInitializer {
 
@@ -11,8 +11,6 @@ public class Main implements ModInitializer {
 	public void onInitialize() {
 		PlaneItems.init();
 		PlaneBlocks.init();
-
-		CookieCreeperEntity.init();
-		BlimpEntity.init();
+		PlaneEntities.init();
 	}
 }

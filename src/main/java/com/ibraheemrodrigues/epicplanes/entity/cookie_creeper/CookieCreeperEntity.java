@@ -1,4 +1,4 @@
-package com.ibraheemrodrigues.epicplanes.cookie_creeper;
+package com.ibraheemrodrigues.epicplanes.entity.cookie_creeper;
 
 import com.ibraheemrodrigues.epicplanes.Util;
 
@@ -18,7 +18,8 @@ public class CookieCreeperEntity extends CreeperEntity {
     }
 
     public static final EntityType<CookieCreeperEntity> COOKIE_CREEPER = Registry.register(Registry.ENTITY_TYPE,
-            Util.Id("cookie_creeper"), FabricEntityTypeBuilder.create(EntityCategory.MONSTER, CookieCreeperEntity::new)
+            Util.getID("cookie_creeper"),
+            FabricEntityTypeBuilder.create(EntityCategory.MONSTER, CookieCreeperEntity::new)
                     .size(EntityDimensions.fixed(1, 2)).build());
 
     public static final void init() {

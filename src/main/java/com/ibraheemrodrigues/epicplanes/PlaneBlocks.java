@@ -8,12 +8,12 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.registry.Registry;
 
-class PlaneBlocks {
+public class PlaneBlocks {
     public static final Block BALLOON_BLOCK = new Block(FabricBlockSettings.of(Material.WOOL).build());
 
     public static void init() {
-        Registry.register(Registry.BLOCK, Util.Id("balloon"), BALLOON_BLOCK);
-        Registry.register(Registry.ITEM, Util.Id("balloon"),
+        Registry.register(Registry.BLOCK, Util.getID("balloon"), BALLOON_BLOCK);
+        Registry.register(Registry.ITEM, Util.getID("balloon"),
                 new BlockItem(BALLOON_BLOCK, new Item.Settings().group(ItemGroup.MISC)));
     }
 }

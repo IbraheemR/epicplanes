@@ -1,4 +1,4 @@
-package com.ibraheemrodrigues.epicplanes.cookie_creeper;
+package com.ibraheemrodrigues.epicplanes.entity.cookie_creeper;
 
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
 import net.minecraft.client.render.entity.MobEntityRenderer;

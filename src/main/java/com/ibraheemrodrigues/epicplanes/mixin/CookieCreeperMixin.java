@@ -1,8 +1,8 @@
-package com.ibraheemrodrigues.epicplanes.cookie_creeper.mixin;
+package com.ibraheemrodrigues.epicplanes.mixin;
 
 import java.util.List;
 
-import com.ibraheemrodrigues.epicplanes.cookie_creeper.CookieCreeperEntity;
+import com.ibraheemrodrigues.epicplanes.entity.cookie_creeper.CookieCreeperEntity;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

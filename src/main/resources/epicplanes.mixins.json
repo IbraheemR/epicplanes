@@ -1,11 +1,13 @@
 {
     "required": true,
-    "package": "com.ibraheemrodrigues.epicplanes.cookie_creeper.mixin",
+    "package": "com.ibraheemrodrigues.epicplanes.mixin",
     "compatibilityLevel": "JAVA_8",
     "mixins": [
         "CookieCreeperMixin"
     ],
-    "client": [],
+    "client": [
+        "ClientPlayNetworkHandlerMixin"
+    ],
     "injectors": {
         "defaultRequire": 1
     }
