@@ -12,5 +12,6 @@ public class PlaneEntities {
     public static final void clientInit() {
         CookieCreeperEntity.clientInit();
         BlimpEntity.clientInit();
+
     }
 }

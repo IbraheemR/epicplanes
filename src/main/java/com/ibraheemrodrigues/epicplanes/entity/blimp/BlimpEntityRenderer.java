@@ -1,8 +1,9 @@
 package com.ibraheemrodrigues.epicplanes.entity.blimp;
 
-import com.ibraheemrodrigues.epicplanes.PlaneBlocks;
+import com.ibraheemrodrigues.epicplanes.block.PlaneBlocks;
 
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
@@ -38,6 +39,7 @@ public class BlimpEntityRenderer extends EntityRenderer<BlimpEntity> {
         matrices.push();
         matrices.translate(0.0D, 0.375D, 0.0D);
         matrices.multiply(Vector3f.POSITIVE_Y.getRotationQuaternion(180.0F - yaw));
+
         float wobbleTime = (float) blimpEntity.getDamageWobbleTicks() - tickDelta;
         float wobbleAmount = blimpEntity.getDamageWobbleStrength() - tickDelta;
         if (wobbleAmount < 0.0F) {
@@ -55,8 +57,26 @@ public class BlimpEntityRenderer extends EntityRenderer<BlimpEntity> {
                     blimpEntity.interpolateBubbleWobble(tickDelta), true));
         }
 
+        // Start Ropes
+        for (int i = 0; i < 4; i++) {
+            int side = i < 2 ? -1 : 1;
+            int frontback = i % 2 == 0 ? -1 : 1;
+
+            ModelPart rope = new ModelPart(16, 16, 0, 0);
+
+            rope.addCuboid(9f * side - ((side + 1) / 2), 2f, 0, 1F, 40.0F, 1F, 0.0F);
+            rope.pitch = frontback * 0.314f;
+            rope.roll = side * -0.314f * 0.5f;
+
+            VertexConsumer ropeVertexConsumer = vertexConsumers
+                    .getBuffer(this.model.getLayer(new Identifier("minecraft:textures/block/oak_log.png")));
+
+            rope.render(matrices, ropeVertexConsumer, light, OverlayTexture.DEFAULT_UV, (Sprite) null);
+        }
+
+        // End Ropes
+
         matrices.scale(-1.0F, -1.0F, 1.0F);
-        matrices.multiply(Vector3f.POSITIVE_Y.getRotationQuaternion(90.0F));
 
         // Start Balloon
 
@@ -72,7 +92,9 @@ public class BlimpEntityRenderer extends EntityRenderer<BlimpEntity> {
 
         // End Balloon
 
-        this.model.method_22952(blimpEntity, tickDelta, 0.0F, -0.1F, 0.0F, 0.0F);
+        // Align with player pitch
+        matrices.multiply(Vector3f.POSITIVE_X.getRotationQuaternion(blimpEntity.getBlimpPitch() * 2));
+        matrices.multiply(Vector3f.POSITIVE_Y.getRotationQuaternion(90.0F));
 
         VertexConsumer lightVertexConsumer = vertexConsumers.getBuffer(this.model.getLayer(getTexture(blimpEntity)));
         this.model.render(matrices, lightVertexConsumer, light, OverlayTexture.DEFAULT_UV, 1.0F, 1.0F, 1.0F);

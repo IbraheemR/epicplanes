@@ -1,4 +1,6 @@
-package com.ibraheemrodrigues.epicplanes;
+package com.ibraheemrodrigues.epicplanes.block;
+
+import com.ibraheemrodrigues.epicplanes.Util;
 
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.Block;
@@ -9,7 +11,7 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.util.registry.Registry;
 
 public class PlaneBlocks {
-    public static final Block BALLOON_BLOCK = new Block(FabricBlockSettings.of(Material.WOOL).build());
+    public static final Block BALLOON_BLOCK = new FloatingBlock(FabricBlockSettings.of(Material.WOOL).build());
 
     public static void init() {
         Registry.register(Registry.BLOCK, Util.getID("balloon"), BALLOON_BLOCK);

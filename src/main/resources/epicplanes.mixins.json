@@ -3,7 +3,8 @@
     "package": "com.ibraheemrodrigues.epicplanes.mixin",
     "compatibilityLevel": "JAVA_8",
     "mixins": [
-        "CookieCreeperMixin"
+        "CookieCreeperMixin",
+        "FloatingBlockMixin"
     ],
     "client": [
         "ClientPlayNetworkHandlerMixin"
