@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "epicplanes",
-  "version": "${mod_version}",
+  "version": "${version}",
   "name": "Epic Planes",
   "description": "Epic Planes fly Epicly",
   "authors": [
