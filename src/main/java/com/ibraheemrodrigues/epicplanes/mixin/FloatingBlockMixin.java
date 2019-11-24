@@ -1,7 +1,5 @@
 package com.ibraheemrodrigues.epicplanes.mixin;
 
-import java.util.List;
-
 import com.ibraheemrodrigues.epicplanes.block.FloatingBlock;
 
 import org.spongepowered.asm.mixin.Mixin;

@@ -1,5 +1,7 @@
 package com.ibraheemrodrigues.epicplanes.mixin;
 
+// From https://github.com/liachmodded/kayak/blob/master/src/main/java/com/github/liachmodded/kayak/mixin/client/ClientPlayNetworkHandlerMixin.java
+
 import com.ibraheemrodrigues.epicplanes.Util;
 
 import net.minecraft.client.network.ClientPlayNetworkHandler;

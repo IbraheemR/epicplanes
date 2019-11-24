@@ -38,7 +38,7 @@ public class BlimpEntityRenderer extends EntityRenderer<BlimpEntity> {
 
         matrices.push();
         matrices.translate(0.0D, 0.375D, 0.0D);
-        matrices.multiply(Vector3f.POSITIVE_Y.getRotationQuaternion(180.0F - yaw));
+        matrices.multiply(Vector3f.POSITIVE_Y.getDegreesQuaternion(180.0F - yaw));
 
         float wobbleTime = (float) blimpEntity.getDamageWobbleTicks() - tickDelta;
         float wobbleAmount = blimpEntity.getDamageWobbleStrength() - tickDelta;
@@ -47,7 +47,7 @@ public class BlimpEntityRenderer extends EntityRenderer<BlimpEntity> {
         }
 
         if (wobbleTime > 0.0F) {
-            matrices.multiply(Vector3f.POSITIVE_X.getRotationQuaternion(MathHelper.sin(wobbleTime) * wobbleTime
+            matrices.multiply(Vector3f.POSITIVE_X.getDegreesQuaternion(MathHelper.sin(wobbleTime) * wobbleTime
                     * wobbleAmount / 10.0F * (float) blimpEntity.getDamageWobbleSide()));
         }
 
@@ -83,7 +83,7 @@ public class BlimpEntityRenderer extends EntityRenderer<BlimpEntity> {
         matrices.push();
         matrices.scale(2, 2, 2);
         matrices.translate(-0.5D, -2, 0.5D);
-        matrices.multiply(Vector3f.POSITIVE_Y.getRotationQuaternion(90.0F));
+        matrices.multiply(Vector3f.POSITIVE_Y.getDegreesQuaternion(90.0F));
 
         MinecraftClient.getInstance().getBlockRenderManager().renderBlockAsEntity(
                 PlaneBlocks.BALLOON_BLOCK.getDefaultState(), matrices, vertexConsumers, light,
@@ -93,8 +93,8 @@ public class BlimpEntityRenderer extends EntityRenderer<BlimpEntity> {
         // End Balloon
 
         // Align with player pitch
-        matrices.multiply(Vector3f.POSITIVE_X.getRotationQuaternion(blimpEntity.getBlimpPitch() * 2));
-        matrices.multiply(Vector3f.POSITIVE_Y.getRotationQuaternion(90.0F));
+        matrices.multiply(Vector3f.POSITIVE_X.getDegreesQuaternion(blimpEntity.getBlimpPitch() * 2));
+        matrices.multiply(Vector3f.POSITIVE_Y.getDegreesQuaternion(90.0F));
 
         VertexConsumer lightVertexConsumer = vertexConsumers.getBuffer(this.model.getLayer(getTexture(blimpEntity)));
         this.model.render(matrices, lightVertexConsumer, light, OverlayTexture.DEFAULT_UV, 1.0F, 1.0F, 1.0F);
