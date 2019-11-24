@@ -92,6 +92,9 @@ public class BlimpEntityRenderer extends EntityRenderer<BlimpEntity> {
 
         // End Balloon
 
+        // Rotate Paddles
+        this.model.method_22952(blimpEntity, tickDelta, 0.0F, -0.1F, 0.0F, 0.0F);
+
         // Align with player pitch
         matrices.multiply(Vector3f.POSITIVE_X.getDegreesQuaternion(blimpEntity.getBlimpPitch() * 2));
         matrices.multiply(Vector3f.POSITIVE_Y.getDegreesQuaternion(90.0F));

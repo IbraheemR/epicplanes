@@ -8,7 +8,6 @@ import net.fabricmc.fabric.api.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.EntityCategory;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.MathHelper;
@@ -41,45 +40,6 @@ public class BlimpEntity extends BoatEntity {
         } else {
             return 0.0F;
         }
-    }
-
-    @Override
-    public boolean damage(DamageSource damage, float amount) {
-        if (!this.world.isClient) {
-            System.out.println(damage.getPosition().subtract(this.getPos()));
-        }
-
-        return super.damage(damage, amount);
-        // if (this.isInvulnerableTo(damage)) {
-        // return false;
-        // } else if (!this.world.isClient && !this.removed) {
-        // if (damage instanceof ProjectileDamageSource && dam)
-        // damage.getPosition()
-        // if (damage instanceof ProjectileDamageSource && damage.getAttacker() != null
-        // && this.hasPassenger(damage.getAttacker())) {
-        // return false;
-        // } else {
-        // this.setDamageWobbleSide(-this.getDamageWobbleSide());
-        // this.setDamageWobbleTicks(10);
-        // this.setDamageWobbleStrength(this.getDamageWobbleStrength() + float_1 *
-        // 10.0F);
-        // this.scheduleVelocityUpdate();
-        // boolean boolean_1 = damage.getAttacker() instanceof PlayerEntity &&
-        // ((PlayerEntity)damage.getAttacker()).abilities.creativeMode;
-        // if (boolean_1 || this.getDamageWobbleStrength() > 40.0F) {
-        // if (!boolean_1 &&
-        // this.world.getGameRules().getBoolean(GameRules.DO_ENTITY_DROPS)) {
-        // this.dropItem(this.asItem());
-        // }
-
-        // this.remove();
-        // }
-
-        // return true;
-        // }
-        // } else {
-        // return true;
-        // }
     }
 
     @Override
