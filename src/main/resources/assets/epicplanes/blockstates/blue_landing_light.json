@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "lit=false": {
+            "model": "epicplanes:block/blue_landing_light_on"
+        },
+        "lit=true": {
+            "model": "epicplanes:block/blue_landing_light"
+        }
+    }
+}

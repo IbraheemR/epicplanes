@@ -1,0 +1,6 @@
+{
+    "parent": "epicplanes:block/landing_light",
+    "textures": {
+        "light": "epicplanes:block/green"
+    }
+}

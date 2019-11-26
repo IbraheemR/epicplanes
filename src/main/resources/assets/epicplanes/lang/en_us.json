@@ -1,6 +1,13 @@
 {
+    "block.epicplanes.asphalt": "Runway Asphalt",
     "block.epicplanes.balloon": "Balloon",
+    "block.epicplanes.white_landing_light": "White Landing Light",
+    "block.epicplanes.yellow_landing_light": "Yellow Landing Light",
+    "block.epicplanes.red_landing_light": "Red Landing Light",
+    "block.epicplanes.green_landing_light": "Green Landing Light",
+    "block.epicplanes.blue_landing_light": "Blue Taxiway Light",
     "item.epicplanes.blimp": "Blimp",
     "entity.epicplanes.blimp": "Blimp",
-    "entity.epicplanes.cookie_creeper": "Cookie Creeper"
+    "entity.epicplanes.cookie_creeper": "Cookie Creeper",
+    "itemGroup.epicplanes.main": "Epic Planes"
 }

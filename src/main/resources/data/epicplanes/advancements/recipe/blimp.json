@@ -1,0 +1,32 @@
+{
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "epicplanes:blimp"
+        ]
+    },
+    "criteria": {
+        "has_balloon": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "epicplanes:balloon"
+                    }
+                ]
+            }
+        },
+        "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "epicplanes:blimp"
+            }
+        },
+        "requirements": [
+            [
+                "has_balloon",
+                "has_the_recipe"
+            ]
+        ]
+    }
+}

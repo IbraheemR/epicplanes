@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "epicplanes:asphalt"
+        },
+        {
+            "item": "minecraft:glowstone_dust"
+        },
+        {
+            "item": "minecraft:red_dye"
+        },
+        {
+            "item": "minecraft:redstone_torch"
+        }
+    ],
+    "result": {
+        "item": "epicplanes:red_landing_light",
+        "count": 1
+    },
+    "group": "epicplanes:landing_lights"
+}

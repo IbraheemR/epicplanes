@@ -1,0 +1,64 @@
+{
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "epicplanes:white_landing_light",
+            "epicplanes:yellow_landing_light",
+            "epicplanes:red_landing_light",
+            "epicplanes:green_landing_light",
+            "epicplanes:blue_landing_light"
+        ]
+    },
+    "criteria": {
+        "has_asphalt": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "epicplanes:asphalt"
+                    }
+                ]
+            }
+        }
+    },
+    "has_the_recipe_white": {
+        "trigger": "minecraft:recipe_unlocked",
+        "conditions": {
+            "recipe": "epicplanes:white_landing_light"
+        }
+    },
+    "has_the_recipe_yellow": {
+        "trigger": "minecraft:recipe_unlocked",
+        "conditions": {
+            "recipe": "epicplanes:yellow_landing_light"
+        }
+    },
+    "has_the_recipe_red": {
+        "trigger": "minecraft:recipe_unlocked",
+        "conditions": {
+            "recipe": "epicplanes:red_landing_light"
+        }
+    },
+    "has_the_recipe_green": {
+        "trigger": "minecraft:recipe_unlocked",
+        "conditions": {
+            "recipe": "epicplanes:green_landing_light"
+        }
+    },
+    "has_the_recipe_blue": {
+        "trigger": "minecraft:recipe_unlocked",
+        "conditions": {
+            "recipe": "epicplanes:blue_landing_light"
+        }
+    },
+    "requirements": [
+        [
+            "has_asphalt",
+            "has_the_recipe_white",
+            "has_the_recipe_yellow",
+            "has_the_recipe_red",
+            "has_the_recipe_green",
+            "has_the_recipe_blue"
+        ]
+    ]
+}

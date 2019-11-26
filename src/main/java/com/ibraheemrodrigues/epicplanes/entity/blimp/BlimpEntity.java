@@ -50,6 +50,7 @@ public class BlimpEntity extends BoatEntity {
 
     @Override
     public void tick() {
+
         float pitch = getBlimpPitch();
         Vec3d vel = this.getVelocity();
 
