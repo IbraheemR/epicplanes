@@ -2,11 +2,10 @@
     "parent": "minecraft:recipes/root",
     "rewards": {
         "recipes": [
-            "epicplanes:white_landing_light",
-            "epicplanes:yellow_landing_light",
-            "epicplanes:red_landing_light",
-            "epicplanes:green_landing_light",
-            "epicplanes:blue_landing_light"
+            "epicplanes:white_runway_marking",
+            "epicplanes:thick_white_runway_marking",
+            "epicplanes:yellow_runway_marking",
+            "epicplanes:dashed_yellow_runway_marking"
         ]
     },
     "criteria": {
@@ -23,31 +22,25 @@
         "has_the_recipe_white": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "epicplanes:white_landing_light"
+                "recipe": "epicplanes:white_runway_marking"
+            }
+        },
+        "has_the_recipe_white_thick": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "epicplanes:thick_white_runway_marking"
             }
         },
         "has_the_recipe_yellow": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "epicplanes:yellow_landing_light"
+                "recipe": "epicplanes:yellow_runway_marking"
             }
         },
-        "has_the_recipe_red": {
+        "has_the_recipe_yellow_dashed": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "epicplanes:red_landing_light"
-            }
-        },
-        "has_the_recipe_green": {
-            "trigger": "minecraft:recipe_unlocked",
-            "conditions": {
-                "recipe": "epicplanes:green_landing_light"
-            }
-        },
-        "has_the_recipe_blue": {
-            "trigger": "minecraft:recipe_unlocked",
-            "conditions": {
-                "recipe": "epicplanes:blue_landing_light"
+                "recipe": "epicplanes:dashed_yellow_runway_marking"
             }
         }
     },
@@ -55,10 +48,9 @@
         [
             "has_asphalt",
             "has_the_recipe_white",
+            "has_the_recipe_white_thick",
             "has_the_recipe_yellow",
-            "has_the_recipe_red",
-            "has_the_recipe_green",
-            "has_the_recipe_blue"
+            "has_the_recipe_yellow_dashed"
         ]
     ]
 }

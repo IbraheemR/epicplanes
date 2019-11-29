@@ -11,7 +11,6 @@ import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
 import net.minecraft.client.render.entity.EntityRenderer;
 import net.minecraft.client.render.entity.model.BoatEntityModel;
-import net.minecraft.client.texture.Sprite;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.client.util.math.Vector3f;
 import net.minecraft.util.Identifier;
@@ -71,7 +70,7 @@ public class BlimpEntityRenderer extends EntityRenderer<BlimpEntity> {
             VertexConsumer ropeVertexConsumer = vertexConsumers
                     .getBuffer(this.model.getLayer(new Identifier("minecraft:textures/block/oak_log.png")));
 
-            rope.render(matrices, ropeVertexConsumer, light, OverlayTexture.DEFAULT_UV, (Sprite) null);
+            rope.render(matrices, ropeVertexConsumer, light, OverlayTexture.DEFAULT_UV);
         }
 
         // End Ropes
@@ -93,17 +92,17 @@ public class BlimpEntityRenderer extends EntityRenderer<BlimpEntity> {
         // End Balloon
 
         // Rotate Paddles
-        this.model.method_22952(blimpEntity, tickDelta, 0.0F, -0.1F, 0.0F, 0.0F);
+        this.model.setAngles(blimpEntity, tickDelta, 0.0F, -0.1F, 0.0F, 0.0F);
 
         // Align with player pitch
         matrices.multiply(Vector3f.POSITIVE_X.getDegreesQuaternion(blimpEntity.getBlimpPitch() * 2));
         matrices.multiply(Vector3f.POSITIVE_Y.getDegreesQuaternion(90.0F));
 
         VertexConsumer lightVertexConsumer = vertexConsumers.getBuffer(this.model.getLayer(getTexture(blimpEntity)));
-        this.model.render(matrices, lightVertexConsumer, light, OverlayTexture.DEFAULT_UV, 1.0F, 1.0F, 1.0F);
+        this.model.render(matrices, lightVertexConsumer, light, OverlayTexture.DEFAULT_UV, 1.0F, 1.0F, 1.0F, 1.0F);
 
         VertexConsumer waterVertexConsumer = vertexConsumers.getBuffer(RenderLayer.getWaterMask());
-        this.model.getBottom().render(matrices, waterVertexConsumer, light, OverlayTexture.DEFAULT_UV, (Sprite) null);
+        this.model.getBottom().render(matrices, waterVertexConsumer, light, OverlayTexture.DEFAULT_UV);
 
         matrices.pop();
         super.render(blimpEntity, yaw, tickDelta, matrices, vertexConsumers, light);

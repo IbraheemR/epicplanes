@@ -21,12 +21,12 @@
             "conditions": {
                 "recipe": "epicplanes:balloon"
             }
-        },
-        "requirements": [
-            [
-                "has_leather",
-                "has_the_recipe"
-            ]
+        }
+    },
+    "requirements": [
+        [
+            "has_leather",
+            "has_the_recipe"
         ]
-    }
+    ]
 }

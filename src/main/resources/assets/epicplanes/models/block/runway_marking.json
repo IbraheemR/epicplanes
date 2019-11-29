@@ -1,0 +1,31 @@
+{
+    "ambientocclusion": false,
+    "textures": {
+        "particle": "epicplanes:block/white_runway_marking_dot"
+    },
+    "elements": [
+        {
+            "from": [
+                0,
+                0.30,
+                0
+            ],
+            "to": [
+                16,
+                0.30,
+                16
+            ],
+            "faces": {
+                "up": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#line"
+                }
+            }
+        }
+    ]
+}

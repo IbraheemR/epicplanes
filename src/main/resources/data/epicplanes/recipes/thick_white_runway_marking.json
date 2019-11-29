@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "epicplanes:white_runway_marking"
+        },
+        {
+            "item": "epicplanes:white_runway_marking"
+        }
+    ],
+    "result": {
+        "item": "epicplanes:thick_white_runway_marking",
+        "count": 1
+    },
+    "group": "epicplanes:runway_markings"
+}

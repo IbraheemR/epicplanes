@@ -21,12 +21,12 @@
             "conditions": {
                 "recipe": "epicplanes:blimp"
             }
-        },
-        "requirements": [
-            [
-                "has_balloon",
-                "has_the_recipe"
-            ]
+        }
+    },
+    "requirements": [
+        [
+            "has_balloon",
+            "has_the_recipe"
         ]
-    }
+    ]
 }

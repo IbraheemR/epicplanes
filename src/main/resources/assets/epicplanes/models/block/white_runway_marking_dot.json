@@ -1,0 +1,6 @@
+{
+    "parent": "epicplanes:block/runway_marking",
+    "textures": {
+        "line": "epicplanes:block/white_runway_marking_dot"
+    }
+}

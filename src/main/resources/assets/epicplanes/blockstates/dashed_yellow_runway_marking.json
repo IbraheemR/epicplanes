@@ -1,0 +1,44 @@
+{
+    "multipart": [
+        {
+            "apply": {
+                "model": "epicplanes:block/yellow_runway_marking_dot"
+            }
+        },
+        {
+            "when": {
+                "north": "true"
+            },
+            "apply": {
+                "model": "epicplanes:block/dashed_yellow_runway_marking_part"
+            }
+        },
+        {
+            "when": {
+                "west": "true"
+            },
+            "apply": {
+                "model": "epicplanes:block/dashed_yellow_runway_marking_part",
+                "y": 270
+            }
+        },
+        {
+            "when": {
+                "south": "true"
+            },
+            "apply": {
+                "model": "epicplanes:block/dashed_yellow_runway_marking_part",
+                "y": 180
+            }
+        },
+        {
+            "when": {
+                "east": "true"
+            },
+            "apply": {
+                "model": "epicplanes:block/dashed_yellow_runway_marking_part",
+                "y": 90
+            }
+        }
+    ]
+}

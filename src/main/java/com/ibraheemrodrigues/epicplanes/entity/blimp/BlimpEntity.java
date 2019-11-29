@@ -56,7 +56,7 @@ public class BlimpEntity extends BoatEntity {
 
         if (MathHelper.abs(pitch) > 5 && hasPassengers()) {
             if (vel.y < 10) {
-                this.addVelocity(0, pitch * -0.0001F, 0);
+                this.addVelocity(0, MathHelper.clamp(pitch * -0.0003F, 90 * -0.0005F, 90 * 0.0005F), 0);
             }
         } else {
             this.setVelocity(vel.x, 0, vel.z);

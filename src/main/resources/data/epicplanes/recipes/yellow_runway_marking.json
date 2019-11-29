@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "epicplanes:asphalt"
+        },
+        {
+            "item": "minecraft:yellow_dye"
+        }
+    ],
+    "result": {
+        "item": "epicplanes:yellow_runway_marking",
+        "count": 16
+    },
+    "group": "epicplanes:runway_markings"
+}

@@ -1,0 +1,7 @@
+{
+    "parent": "epicplanes:block/runway_marking",
+    "textures": {
+        "line": "epicplanes:block/dashed_yellow_runway_marking_part",
+        "particle": "epicplanes:block/yellow_runway_marking_dot"
+    }
+}
