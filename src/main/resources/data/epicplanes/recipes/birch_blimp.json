@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        " L ",
+        " O "
+    ],
+    "key": {
+        "#": {
+            "item": "epicplanes:balloon"
+        },
+        "L": {
+            "item": "minecraft:lead"
+        },
+        "O": {
+            "item": "minecraft:birch_boat"
+        }
+    },
+    "result": {
+        "item": "epicplanes:birch_blimp",
+        "count": 1
+    },
+    "group": "epicplanes:blimps"
+}

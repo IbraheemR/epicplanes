@@ -1,35 +1,20 @@
 package com.ibraheemrodrigues.epicplanes.entity.blimp;
 
-import com.ibraheemrodrigues.epicplanes.Util;
 import com.ibraheemrodrigues.epicplanes.item.PlaneItems;
 
-import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
-import net.fabricmc.fabric.api.entity.FabricEntityTypeBuilder;
-import net.minecraft.entity.EntityCategory;
-import net.minecraft.entity.EntityDimensions;
+
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.registry.Registry;
+
 import net.minecraft.world.World;
 
 public class BlimpEntity extends BoatEntity {
 
-    public static final EntityType<BlimpEntity> BLIMP = Registry.register(Registry.ENTITY_TYPE, Util.getID("blimp"),
-            FabricEntityTypeBuilder.create(EntityCategory.MISC, BlimpEntity::new).size(EntityDimensions.fixed(1.5F, 4F))
-                    .trackable(80, 3).build());
-
     public BlimpEntity(EntityType<? extends BoatEntity> entityType, World world) {
         super(entityType, world);
-    }
-
-    public static final void init() {
-    }
-
-    public static final void clientInit() {
-        EntityRendererRegistry.INSTANCE.register(BLIMP, (dispatcher, context) -> new BlimpEntityRenderer(dispatcher));
     }
 
     public float getBlimpPitch() {
@@ -44,8 +29,21 @@ public class BlimpEntity extends BoatEntity {
 
     @Override
     public Item asItem() {
-
-        return PlaneItems.BLIMP_ITEM;
+        switch(this.getBoatType()) {
+            case OAK:
+            default:
+                return PlaneItems.OAK_BLIMP;
+            case SPRUCE:
+                return PlaneItems.SPRUCE_BLIMP;
+            case BIRCH:
+                return PlaneItems.BIRCH_BLIMP;
+            case JUNGLE:
+                return PlaneItems.JUNGLE_BLIMP;
+            case ACACIA:
+                return PlaneItems.ACACIA_BLIMP;
+            case DARK_OAK:
+                return PlaneItems.DARK_OAK_BLIMP;
+        }
     }
 
     @Override

@@ -2,16 +2,16 @@
     "parent": "minecraft:recipes/root",
     "rewards": {
         "recipes": [
-            "epicplanes:blimp"
+            "epicplanes:localizer_receiver"
         ]
     },
     "criteria": {
-        "has_balloon": {
+        "has_antenna": {
             "trigger": "minecraft:inventory_changed",
             "conditions": {
                 "items": [
                     {
-                        "item": "epicplanes:balloon"
+                        "item": "epicplanes:antenna"
                     }
                 ]
             }
@@ -19,13 +19,13 @@
         "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "epicplanes:blimp"
+                "recipe": "epicplanes:localizer_receiver"
             }
         }
     },
     "requirements": [
         [
-            "has_balloon",
+            "has_antenna",
             "has_the_recipe"
         ]
     ]

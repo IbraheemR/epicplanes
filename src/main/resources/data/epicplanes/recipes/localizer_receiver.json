@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " I ",
+        "ESR",
+        " C "
+    ],
+    "key": {
+        "I": {
+            "item": "epicplanes:antenna"
+        },
+        "S": {
+            "item": "minecraft:sea_pickle"
+        },
+        "E": {
+            "item": "minecraft:ender_pearl"
+        },
+        "R": {
+            "item": "minecraft:redstone"
+        },
+        "C": {
+            "item": "minecraft:comparator"
+        }
+    },
+    "result": {
+        "item": "epicplanes:localizer_receiver",
+        "count": 1
+    }
+}

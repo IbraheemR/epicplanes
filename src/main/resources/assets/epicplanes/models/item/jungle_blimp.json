@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "epicplanes:item/oak_blimp"
+        "layer0": "epicplanes:item/jungle_blimp"
     }
 }

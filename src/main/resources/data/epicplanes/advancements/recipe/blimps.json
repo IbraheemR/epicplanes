@@ -1,0 +1,72 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "epicplanes:oak_blimp",
+      "epicplanes:spruce_blimp",
+      "epicplanes:birch_blimp",
+      "epicplanes:jungle_blimp",
+      "epicplanes:acacia_blimp",
+      "epicplanes:dark_oak_blimp"
+    ]
+  },
+  "criteria": {
+    "has_balloon": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "epicplanes:balloon"
+          }
+        ]
+      }
+    },
+    "has_the_recipe_oak": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "epicplanes:oak_blimp"
+      }
+    },
+    "has_the_recipe_spruce": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "epicplanes:spruce_blimp"
+      }
+    },
+    "has_the_recipe_birch": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "epicplanes:birch_blimp"
+      }
+    },
+    "has_the_recipe_jungle": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "epicplanes:jungle_blimp"
+      }
+    },
+    "has_the_recipe_acacia": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "epicplanes:acacia_blimp"
+      }
+    },
+    "has_the_recipe_dark_oak": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "epicplanes:dark_oak_blimp"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_balloon",
+      "has_the_recipe_oak",
+      "has_the_recipe_spruce",
+      "has_the_recipe_birch",
+      "has_the_recipe_jungle",
+      "has_the_recipe_acacia",
+      "has_the_recipe_dark_oak"
+    ]
+  ]
+}

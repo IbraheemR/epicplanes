@@ -2,6 +2,7 @@ package com.ibraheemrodrigues.epicplanes.mixin;
 
 import java.util.List;
 
+import com.ibraheemrodrigues.epicplanes.entity.PlaneEntities;
 import com.ibraheemrodrigues.epicplanes.entity.cookie_creeper.CookieCreeperEntity;
 
 import org.spongepowered.asm.mixin.Mixin;
@@ -32,7 +33,7 @@ public class CookieCreeperMixin extends HostileEntity {
     // easiest way to hook private explode() method
     @Inject(at = @At("HEAD"), method = "explode")
     private void explode(CallbackInfo info) {
-        if (!this.world.isClient && this.getType() == CookieCreeperEntity.COOKIE_CREEPER
+        if (!this.world.isClient && this.getType() == PlaneEntities.COOKIE_CREEPER
                 && this.world.getGameRules().getBoolean(GameRules.DO_MOB_LOOT)) {
 
             int amount = (int) Math.floor(Math.random() * 2);
@@ -67,7 +68,7 @@ public class CookieCreeperMixin extends HostileEntity {
                     if (stack.getItem() == Items.COOKIE) {
                         stack.setCount(stack.getCount() - 1);
 
-                        CookieCreeperEntity cookieCreeperEntity = (CookieCreeperEntity) CookieCreeperEntity.COOKIE_CREEPER
+                        CookieCreeperEntity cookieCreeperEntity = (CookieCreeperEntity) PlaneEntities.COOKIE_CREEPER
                                 .create(this.world);
 
                         Vec3d pos = getPos();

@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#I#",
+        "TET",
+        "#B#"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:iron_block"
+        },
+        "I": {
+            "item": "epicplanes:antenna"
+        },
+        "T": {
+            "item": "minecraft:redstone_torch"
+        },
+        "E": {
+            "item": "minecraft:ender_pearl"
+        },
+        "B": {
+            "item": "minecraft:beacon"
+        }
+    },
+    "result": {
+        "item": "epicplanes:localizer_block",
+        "count": 1
+    }
+}

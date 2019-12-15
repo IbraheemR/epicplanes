@@ -17,7 +17,8 @@
         }
     },
     "result": {
-        "item": "epicplanes:blimp",
+        "item": "epicplanes:oak_blimp",
         "count": 1
-    }
+    },
+    "group": "epicplanes:blimps"
 }
