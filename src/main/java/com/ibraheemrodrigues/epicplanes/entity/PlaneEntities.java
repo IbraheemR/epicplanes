@@ -1,6 +1,7 @@
 package com.ibraheemrodrigues.epicplanes.entity;
 
 import com.ibraheemrodrigues.epicplanes.Util;
+import com.ibraheemrodrigues.epicplanes.entity.basicplane.BasicPlane;
 import com.ibraheemrodrigues.epicplanes.entity.blimp.BlimpEntity;
 import com.ibraheemrodrigues.epicplanes.entity.blimp.BlimpEntityRenderer;
 import com.ibraheemrodrigues.epicplanes.entity.cookie_creeper.CookieCreeperEntity;
@@ -22,7 +23,11 @@ public class PlaneEntities {
             FabricEntityTypeBuilder.create(EntityCategory.MISC, BlimpEntity::new)
                     .size(EntityDimensions.fixed(1.5F, 0.6F)).trackable(80, 3).build());
 
-    public static  final void init() {
+    public static final EntityType<BasicPlane> BASIC_PLANE = Registry.register(Registry.ENTITY_TYPE, Util.getID("basic_plane"),
+            FabricEntityTypeBuilder.create(EntityCategory.MISC, BasicPlane::new)
+                    .size(EntityDimensions.fixed(1.5F, 0.6F)).trackable(80, 3).build());
+
+    public static void init() {
 
     }
 }

@@ -26,7 +26,7 @@ public class PlaneItems {
             new Item.Settings().group(PlaneItemGroup.MAIN_GROUP).maxCount(1));
 
 
-    public static final void init() {
+    public static void init() {
         PlaneItemGroup.init();
 
 

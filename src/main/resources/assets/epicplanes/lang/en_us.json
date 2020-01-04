@@ -28,5 +28,7 @@
     "item.epicplanes.localizer_receiver.set.invalid": "Targeted block is not a localizer!",
     "item.epicplanes.localizer_receiver.get": "Using localizer at [X: %s Y: %s Z: %s] on %sHz",
     "item.epicplanes.localizer_receiver.get.cantfind": "No localizer found on %sHz (wrong dimension?)",
-    "item.epicplanes.localizer_receiver.get.unset": "Receiver not bound!"
+    "item.epicplanes.localizer_receiver.get.unset": "Receiver not bound!",
+    "key.epicplanes.freecam": "Enable Freecam",
+    "key.epicplanes.freecam.toggle_message": "Freecam turned %s (%s to toggle)"
 }

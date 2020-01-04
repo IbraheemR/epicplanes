@@ -44,6 +44,7 @@ public abstract class ClientPlayNetworkHandlerMixin {
       entity.yaw = (float) (packet.getYaw() * 360) / 256.0F;
       entity.setEntityId(networkId);
       entity.setUuid(packet.getUuid());
+
       this.world.addEntity(networkId, entity);
       ci.cancel();
     }

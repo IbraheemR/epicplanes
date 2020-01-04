@@ -68,7 +68,7 @@ public class CookieCreeperMixin extends HostileEntity {
                     if (stack.getItem() == Items.COOKIE) {
                         stack.setCount(stack.getCount() - 1);
 
-                        CookieCreeperEntity cookieCreeperEntity = (CookieCreeperEntity) PlaneEntities.COOKIE_CREEPER
+                        CookieCreeperEntity cookieCreeperEntity = PlaneEntities.COOKIE_CREEPER
                                 .create(this.world);
 
                         Vec3d pos = getPos();
