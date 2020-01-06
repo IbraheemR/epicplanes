@@ -71,7 +71,9 @@ public class PlanePackets {
             packetContext.getTaskQueue().execute(() -> {
                 BasicPlane plane = (BasicPlane) packetContext.getPlayer().world.getEntityById(planeId);
 
-                plane.setEnginePower(enginePower);
+                if (packetContext.getPlayer() == plane.getPrimaryPassenger()) {
+                    plane.setEnginePower(enginePower);
+                }
             });
         });
     }

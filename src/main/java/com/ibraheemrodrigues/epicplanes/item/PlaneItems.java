@@ -29,7 +29,6 @@ public class PlaneItems {
     public static void init() {
         PlaneItemGroup.init();
 
-
         Registry.register(Registry.ITEM, Util.getID("antenna"), ANTENNA);
 
         Registry.register(Registry.ITEM, Util.getID("oak_blimp"), OAK_BLIMP);

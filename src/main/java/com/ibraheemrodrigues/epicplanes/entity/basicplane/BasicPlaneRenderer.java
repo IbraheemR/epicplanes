@@ -58,6 +58,7 @@ public class BasicPlaneRenderer extends EntityRenderer<BasicPlane> {
 
         matrixStack.translate(0, 0.375, 0);
 
+
         matrixStack.multiply(Vector3f.NEGATIVE_Y.getDegreesQuaternion(90));
 
         matrixStack.push();
@@ -74,7 +75,6 @@ public class BasicPlaneRenderer extends EntityRenderer<BasicPlane> {
         this.renderInstruments(plane, yaw, tickDelta, matrixStack, vertexConsumerProvider, light);
 
         matrixStack.pop();
-
     }
 
     private void renderInstruments(BasicPlane plane, float yaw, float tickDelta, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int light) {
@@ -86,11 +86,12 @@ public class BasicPlaneRenderer extends EntityRenderer<BasicPlane> {
         matrixStack.multiply(Vector3f.POSITIVE_Z.getDegreesQuaternion(45));
 
         float engineProportion = (plane.enginePower/plane.maxEnginePower);
+        float setEngineProportion = (plane.setEnginePower/plane.maxEnginePower);
 
         float red = MathHelper.clamp(3 * engineProportion - 1, 0, 1);
         float green = MathHelper.clamp(-3 * engineProportion + 3, 0, 1);
 
-        WorldRenderer.drawBox(matrixStack, vertexConsumerProvider.getBuffer(RenderLayer.LINES), 0, 0.5, 0, 0.1, 0.5 * engineProportion, 0.1, 0.5f, 0.5f, 0.5f, 1);
+        WorldRenderer.drawBox(matrixStack, vertexConsumerProvider.getBuffer(RenderLayer.LINES), 0, 0.5, 0, 0.1, 0.5 * setEngineProportion, 0.1, 0, 0, 1, 1);
         WorldRenderer.drawBox(matrixStack, vertexConsumerProvider.getBuffer(RenderLayer.LINES), 0, 0, 0, 0.1, 0.5 * engineProportion, 0.1, red, green, 0, 1);
 
         matrixStack.pop();
@@ -98,9 +99,7 @@ public class BasicPlaneRenderer extends EntityRenderer<BasicPlane> {
 
     private float getRiderYaw(BasicPlane entity, float tickDelta) {
         if (entity.hasPassengers()) {
-            Entity rider = entity.getPrimaryPassenger();
-
-            return rider.prevYaw + (rider.yaw - rider.prevYaw) * tickDelta;
+            return entity.getPrimaryPassenger().getYaw(tickDelta);
         }
         return 0;
     }

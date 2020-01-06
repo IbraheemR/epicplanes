@@ -1,5 +1,6 @@
 package com.ibraheemrodrigues.epicplanes.entity.basicplane;
 
+import com.ibraheemrodrigues.epicplanes.client.PlaneKeybinds;
 import com.ibraheemrodrigues.epicplanes.network.PlanePackets;
 import io.netty.buffer.Unpooled;
 import net.fabricmc.fabric.api.network.ClientSidePacketRegistry;
@@ -41,11 +42,18 @@ public class BasicPlane extends BoatEntity {
 //    protected float enginePower = 0;
 
     protected float enginePower = 0;
+    protected float setEnginePower = 0;
 
-    protected final float maxEnginePower = 0.1f;
-    protected final float enginePowerStep = 0.001f;
+    protected final float maxEnginePower = 0.3f;
+    protected final float enginePowerStep = maxEnginePower/100;
+
+    protected final double gravity = -0.1;
 
     protected final double decayCoef = 0.1;
+
+    protected float pitchVelocity = 0;
+    protected float yawVelocity = 0;
+
 
     public BasicPlane(EntityType<? extends BoatEntity> entityType, World world) {
         super(entityType, world);
@@ -82,6 +90,7 @@ public class BasicPlane extends BoatEntity {
 
     @Override
     public void tick() {
+
         if (this.getDamageWobbleTicks() > 0) {
             this.setDamageWobbleTicks(this.getDamageWobbleTicks() - 1);
         }
@@ -101,6 +110,8 @@ public class BasicPlane extends BoatEntity {
 
         this.checkBlockCollision();
         this.handleEntityCollision();
+
+        sendEngineDataPacket();
     }
 
     private void fakeBaseTick() {
@@ -111,8 +122,6 @@ public class BasicPlane extends BoatEntity {
 
         this.baseTick();
     }
-
-
 
     private void interpolationSyncUpdate() {
         if (this.isLogicalSideForUpdatingMovement()) {
@@ -144,27 +153,58 @@ public class BasicPlane extends BoatEntity {
     }
 
     private void doPhysics() {
+        final double tickDelta = 0.05;
+
         // TODO: Proper phyics
 
         //
         // Force
         //
+        this.enginePower  += (float) ((this.setEnginePower - this.enginePower) * decayCoef);
+
+        // engine
+        Vec3d netForce = Vec3d.fromPolar(this.pitch, this.yaw).multiply(this.enginePower)
+        // gravity
+        .add(0, this.gravity * (1 - this.enginePower/this.maxEnginePower), 0)
+        // upthrust = -g *2 * sin(pitch+PI/6) * engineProportion
+//        .add(0, -this.gravity * 2 * Math.sin(2 * this.pitch + Math.PI/6) * this.enginePower/this.maxEnginePower, 0)
+        // Air resistance
+        .subtract(this.getVelocity().multiply(0.1))
+
+        // Ground Resistance
+        .subtract(this.getVelocity().multiply(1, 0, 1).multiply(0.5))
+                ;
 
         //
         // Acceleration
         //
 
+        // a = F/m
+        Vec3d acceleration = netForce.multiply(1d/this.mass);
+
+        // decay pitch velocity
+        this.yawVelocity *= 1-decayCoef;
+        this.pitchVelocity *= 1-decayCoef;
+
         //
         // Velocity
         //
 
-        this.setVelocity(0, 0, this.enginePower);
+        // v = u + at
+        Vec3d velocity = this.getVelocity().add(acceleration.multiply(tickDelta));
+
+        this.setVelocity(velocity);
 
         //
         // Position
         //
 
         this.move(MovementType.SELF, this.getVelocity());
+    }
+
+    @Override
+    protected void copyEntityData(Entity entity) {
+        // Override to do nothing
     }
 
     public void setEnginePower(float power) {
@@ -191,25 +231,18 @@ public class BasicPlane extends BoatEntity {
 
     @Override
     public void setInputs(boolean pressingLeft, boolean pressingRight, boolean pressingForward, boolean pressingBack) {
-        // TODO: better controls/keybinds for plane
 
-        if (this.getPrimaryPassenger() == MinecraftClient.getInstance().player) {
-
-            if (pressingForward) {
-                this.enginePower += this.enginePowerStep;
-
-            }
-            if (pressingBack) {
-                this.enginePower -= this.enginePowerStep;
-            }
-
-            this.enginePower = MathHelper.clamp(this.enginePower, 0, this.maxEnginePower);
-
-            sendEnginePowerPacket();
+        if (pressingForward) {
+            this.setEnginePower += this.enginePowerStep;
         }
+        if (pressingBack) {
+            this.setEnginePower -= this.enginePowerStep;
+        }
+
+        this.setEnginePower = MathHelper.clamp(this.setEnginePower, 0, this.maxEnginePower);
     }
 
-    private void sendEnginePowerPacket() {
+    private void sendEngineDataPacket() {
         PacketByteBuf passedData = new PacketByteBuf(Unpooled.buffer());
 
         passedData.writeInt(this.getEntityId());

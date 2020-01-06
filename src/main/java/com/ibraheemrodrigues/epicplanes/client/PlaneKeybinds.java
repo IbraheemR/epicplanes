@@ -14,16 +14,13 @@ public class PlaneKeybinds {
 
     public static FabricKeyBinding freecamKeybind;
     public boolean  freecamToggle = false;
-    public boolean  freecamKeyPressed = false;
     private static String FREECAM_TOGGLE_MESSAGE_KEY = "key.epicplanes.freecam.toggle_message";
-
-    // TODO: implement this in basic plane
 
     public static void clientInit() {
         freecamKeybind = FabricKeyBinding.Builder.create(
                 Util.getID("freecam"),
                 InputUtil.Type.KEYSYM,
-                GLFW.GLFW_KEY_F,
+                GLFW.GLFW_KEY_V,
                 "Epic Planes Keybinds"
         ).build();
 
@@ -37,7 +34,6 @@ public class PlaneKeybinds {
             this.freecamToggle = !this.freecamToggle;
                 MinecraftClient.getInstance().player.sendMessage(new TranslatableText(FREECAM_TOGGLE_MESSAGE_KEY, this.freecamToggle ? "on" : "off", freecamKeybind.getBoundKey().getName()));
         }
-        this.freecamKeyPressed = freecamKeybind.isPressed();
     }
 
 }
