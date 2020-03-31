@@ -28,7 +28,7 @@ public class LocalizerBlockEntityRenderer extends BlockEntityRenderer<LocalizerB
         matrixStack.multiply(Vector3f.NEGATIVE_Y.getDegreesQuaternion(blockEntity.getHeading().asRotation()));
 
         // Metal Post
-        MinecraftClient.getInstance().getItemRenderer().renderItem(new ItemStack(PlaneItems.ANTENNA), ModelTransformation.Mode.GROUND, light, overlay, matrixStack, vertexConsumerProvider);
+        MinecraftClient.getInstance().getItemRenderer().renderItem(new ItemStack(PlaneItems.ANTENNA), ModelTransformation.Type.GROUND, light, overlay, matrixStack, vertexConsumerProvider);
 
         matrixStack.translate(0, 0.4, 0);
 
@@ -39,7 +39,7 @@ public class LocalizerBlockEntityRenderer extends BlockEntityRenderer<LocalizerB
         matrixStack.multiply(Vector3f.POSITIVE_X.getDegreesQuaternion(90));
         matrixStack.translate(0, -0.2, 0);
 
-        MinecraftClient.getInstance().getItemRenderer().renderItem(new ItemStack(Blocks.BEACON), ModelTransformation.Mode.GROUND, light, overlay, matrixStack, vertexConsumerProvider);
+        MinecraftClient.getInstance().getItemRenderer().renderItem(new ItemStack(Blocks.BEACON), ModelTransformation.Type.GROUND, light, overlay, matrixStack, vertexConsumerProvider);
         matrixStack.pop();
 
         // Radial Element
@@ -48,14 +48,14 @@ public class LocalizerBlockEntityRenderer extends BlockEntityRenderer<LocalizerB
         matrixStack.multiply(Vector3f.POSITIVE_Z.getRadialQuaternion(blockEntity.getWorld().getTime() + partialTicks));
         matrixStack.translate(0, 0.1 , 0);
 
-        MinecraftClient.getInstance().getItemRenderer().renderItem(new ItemStack(Items.REDSTONE_TORCH), ModelTransformation.Mode.GROUND, light, overlay, matrixStack, vertexConsumerProvider);
+        MinecraftClient.getInstance().getItemRenderer().renderItem(new ItemStack(Items.REDSTONE_TORCH), ModelTransformation.Type.GROUND, light, overlay, matrixStack, vertexConsumerProvider);
 
         matrixStack.translate(0, -0.2 , 0);
 
         matrixStack.multiply(Vector3f.POSITIVE_Z.getDegreesQuaternion(180));
 
 
-        MinecraftClient.getInstance().getItemRenderer().renderItem(new ItemStack(Items.REDSTONE_TORCH), ModelTransformation.Mode.GROUND, light, overlay, matrixStack, vertexConsumerProvider);
+        MinecraftClient.getInstance().getItemRenderer().renderItem(new ItemStack(Items.REDSTONE_TORCH), ModelTransformation.Type.GROUND, light, overlay, matrixStack, vertexConsumerProvider);
 
         matrixStack.pop();
 

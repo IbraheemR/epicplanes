@@ -33,7 +33,7 @@ public abstract class FloatingBlockMixin extends Entity {
         if (this.block.isAir()) {
             this.remove();
         } else {
-            BlockPos blockPos = new BlockPos(this.getPos());
+            BlockPos blockPos = new BlockPos(this);
 
             if (!this.hasNoGravity()) {
                 if (this.block.getBlock() instanceof FloatingBlock) {

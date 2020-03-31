@@ -71,7 +71,7 @@ public class CookieCreeperMixin extends HostileEntity {
 
                         Vec3d pos = getPos();
 
-                        cookieCreeperEntity.refreshPositionAndAngles(pos.x, pos.y, pos.z, this.yaw, this.pitch);
+                        cookieCreeperEntity.setPositionAndAngles(pos.x, pos.y, pos.z, this.yaw, this.pitch);
                         cookieCreeperEntity.setAiDisabled(this.isAiDisabled());
                         if (this.hasCustomName()) {
                             cookieCreeperEntity.setCustomName(this.getCustomName());

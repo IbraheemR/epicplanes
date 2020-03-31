@@ -2,7 +2,6 @@ package com.ibraheemrodrigues.epicplanes.block.entity;
 
 import com.ibraheemrodrigues.epicplanes.block.PlaneBlocks;
 import net.fabricmc.fabric.api.block.entity.BlockEntityClientSerializable;
-import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.math.Direction;
@@ -23,8 +22,8 @@ public class LocalizerBlockEntity extends BlockEntity implements BlockEntityClie
     }
 
     @Override
-    public void fromTag(BlockState state, CompoundTag tag) {
-        super.fromTag(state, tag);
+    public void fromTag(CompoundTag tag) {
+        super.fromTag(tag);
         if (tag.contains(HEADING_KEY)) {
             this.heading = Direction.byName(tag.getString(HEADING_KEY));
         } else {
@@ -50,7 +49,7 @@ public class LocalizerBlockEntity extends BlockEntity implements BlockEntityClie
 
     @Override
     public void fromClientTag(CompoundTag tag) {
-        this.fromTag(PlaneBlocks.LOCALIZER_BLOCK.getDefaultState(), tag);
+        fromTag(tag);
     }
 
     @Override

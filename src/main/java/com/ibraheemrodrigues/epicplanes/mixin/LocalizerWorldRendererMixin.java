@@ -5,13 +5,17 @@ import com.ibraheemrodrigues.epicplanes.item.LocalizerReceiver;
 import com.ibraheemrodrigues.epicplanes.item.PlaneItems;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.*;
+import net.minecraft.client.util.math.Matrix4f;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.client.util.math.Vector3f;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Hand;
-import net.minecraft.util.math.*;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -32,8 +36,8 @@ public class LocalizerWorldRendererMixin {
 
         @Inject(at = @At("HEAD"), method = "render")
         private void render(MatrixStack matrixStack, float tickDelta, long limitTime, boolean renderBlockOutline,
-                            Camera camera, GameRenderer gameRenderer, LightmapTextureManager lightmapTextureManager,
-                            Matrix4f matrix4f, CallbackInfo info) {
+                        Camera camera, GameRenderer gameRenderer, LightmapTextureManager lightmapTextureManager,
+                        Matrix4f matrix4f, CallbackInfo info) {
 
                 if (this.client.player.getStackInHand(Hand.MAIN_HAND).getItem() == PlaneItems.LOCALIZER_RECEIVER
                                 || this.client.player.getStackInHand(Hand.OFF_HAND)

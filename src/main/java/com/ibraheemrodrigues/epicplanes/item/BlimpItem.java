@@ -57,7 +57,7 @@ public class BlimpItem extends Item {
                 BlimpEntity blimpEntity = Preconditions.checkNotNull(PlaneEntities.BLIMP.create(world));
 
                 Vec3d pos = hitResult.getPos();
-                blimpEntity.updatePosition(pos.x, pos.y, pos.z);
+                blimpEntity.setPosition(pos.x, pos.y, pos.z);
                 blimpEntity.yaw = player.yaw;
 
                 blimpEntity.setBoatType(type);

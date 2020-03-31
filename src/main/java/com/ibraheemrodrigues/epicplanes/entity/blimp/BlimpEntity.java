@@ -53,6 +53,8 @@ public class BlimpEntity extends BoatEntity {
             if (vel.y < 10) {
                 this.addVelocity(0, MathHelper.clamp(pitch * -0.0003F, 90 * -0.0005F, 90 * 0.0005F), 0);
             }
+        } else {
+            this.setVelocity(vel.x, 0, vel.z);
         }
 
         super.tick();
