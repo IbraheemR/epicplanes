@@ -1,10 +1,8 @@
 package com.ibraheemrodrigues.epicplanes.entity.basicplane;
 
-import com.ibraheemrodrigues.epicplanes.client.PlaneKeybinds;
 import com.ibraheemrodrigues.epicplanes.network.PlanePackets;
 import io.netty.buffer.Unpooled;
 import net.fabricmc.fabric.api.network.ClientSidePacketRegistry;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -28,7 +26,7 @@ public class BasicPlane extends BoatEntity {
     private int stepsToSync;
     private double syncX;
     private double syncY;
-    private double trackZ;
+    private double syncZ;
     private double syncYaw;
     private double syncPitch;
 
@@ -50,10 +48,6 @@ public class BasicPlane extends BoatEntity {
     protected final double gravity = -0.1;
 
     protected final double decayCoef = 0.1;
-
-    protected float pitchVelocity = 0;
-    protected float yawVelocity = 0;
-
 
     public BasicPlane(EntityType<? extends BoatEntity> entityType, World world) {
         super(entityType, world);
@@ -132,7 +126,7 @@ public class BasicPlane extends BoatEntity {
         if (this.stepsToSync > 0) {
             double x = this.getX() + (this.syncX - this.getX()) / (double)this.stepsToSync;
             double y = this.getY() + (this.syncY - this.getY()) / (double)this.stepsToSync;
-            double z = this.getZ() + (this.trackZ - this.getZ()) / (double)this.stepsToSync;
+            double z = this.getZ() + (this.syncZ - this.getZ()) / (double)this.stepsToSync;
             double yaw = MathHelper.wrapDegrees(this.syncYaw - (double)this.yaw);
             this.yaw = (float)((double)this.yaw + yaw / (double)this.stepsToSync);
             this.pitch = (float)((double)this.pitch + (this.syncPitch - (double)this.pitch) / (double)this.stepsToSync);
@@ -146,7 +140,7 @@ public class BasicPlane extends BoatEntity {
     public void updateTrackedPositionAndAngles(double x, double y, double z, float yaw, float pitch, int interpolationSteps, boolean interpolate) {
         this.syncX = x;
         this.syncY = y;
-        this.trackZ = z;
+        this.syncZ = z;
         this.syncYaw = yaw;
         this.syncPitch = pitch;
         this.stepsToSync = 10;
@@ -155,7 +149,7 @@ public class BasicPlane extends BoatEntity {
     private void doPhysics() {
         final double tickDelta = 0.05;
 
-        // TODO: Proper phyics
+        // TODO: Proper physics
 
         //
         // Force
@@ -175,31 +169,28 @@ public class BasicPlane extends BoatEntity {
         .subtract(this.getVelocity().multiply(1, 0, 1).multiply(0.5))
                 ;
 
-        //
-        // Acceleration
-        //
 
         // a = F/m
         Vec3d acceleration = netForce.multiply(1d/this.mass);
-
-        // decay pitch velocity
-        this.yawVelocity *= 1-decayCoef;
-        this.pitchVelocity *= 1-decayCoef;
-
-        //
-        // Velocity
-        //
 
         // v = u + at
         Vec3d velocity = this.getVelocity().add(acceleration.multiply(tickDelta));
 
         this.setVelocity(velocity);
 
-        //
-        // Position
-        //
-
+        // Move
         this.move(MovementType.SELF, this.getVelocity());
+
+        // Rotational
+        if (this.hasPassengers()) {
+            Entity pilot = this.getPrimaryPassenger();
+
+            this.yaw += (pilot.yaw / 2 - this.yaw) * decayCoef * this.enginePower / this.maxEnginePower;
+            this.pitch+= (pilot.pitch / 2 - this.pitch) * decayCoef * this.enginePower / this.maxEnginePower;
+
+            this.yaw = MathHelper.wrapDegrees(this.yaw);
+            this.pitch = MathHelper.clamp(this.pitch, -90, 90);
+        }
     }
 
     @Override
