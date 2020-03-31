@@ -1,15 +1,7 @@
 package com.ibraheemrodrigues.epicplanes.mixin;
 
-import java.util.List;
-
 import com.ibraheemrodrigues.epicplanes.entity.PlaneEntities;
 import com.ibraheemrodrigues.epicplanes.entity.cookie_creeper.CookieCreeperEntity;
-
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
@@ -21,6 +13,12 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import net.minecraft.world.explosion.Explosion;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import java.util.List;
 
 @Mixin(CreeperEntity.class)
 public class CookieCreeperMixin extends HostileEntity {
@@ -73,7 +71,7 @@ public class CookieCreeperMixin extends HostileEntity {
 
                         Vec3d pos = getPos();
 
-                        cookieCreeperEntity.setPositionAndAngles(pos.x, pos.y, pos.z, this.yaw, this.pitch);
+                        cookieCreeperEntity.refreshPositionAndAngles(pos.x, pos.y, pos.z, this.yaw, this.pitch);
                         cookieCreeperEntity.setAiDisabled(this.isAiDisabled());
                         if (this.hasCustomName()) {
                             cookieCreeperEntity.setCustomName(this.getCustomName());

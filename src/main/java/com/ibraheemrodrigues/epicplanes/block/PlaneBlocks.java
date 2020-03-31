@@ -1,20 +1,11 @@
 package com.ibraheemrodrigues.epicplanes.block;
 
 import com.ibraheemrodrigues.epicplanes.Util;
-import com.ibraheemrodrigues.epicplanes.item.PlaneItemGroup;
-import com.ibraheemrodrigues.epicplanes.item.PlaneItems;
 import com.ibraheemrodrigues.epicplanes.block.entity.LocalizerBlockEntity;
-import com.ibraheemrodrigues.epicplanes.block.entity.LocalizerBlockEntityRenderer;
-
+import com.ibraheemrodrigues.epicplanes.item.PlaneItemGroup;
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
-import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
-import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegistry;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.Material;
-import net.minecraft.block.MaterialColor;
+import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.client.render.RenderLayer;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.util.registry.Registry;
@@ -26,19 +17,19 @@ public class PlaneBlocks {
         // Runway Blocks
         public static final Block ASPHALT_BLOCK = new Block(
                         FabricBlockSettings.copy(Blocks.STONE).materialColor(MaterialColor.BLACK).build());
-
-        public static final InvertedRedstoneLampBlock LANDING_LIGHT_WHITE = new InvertedRedstoneLampBlock(
+        // TODO: this needs to be updated to change light level based on "lit" property. Waiting on FabricAPI
+        public static final RedstoneLampBlock LANDING_LIGHT_WHITE = new RedstoneLampBlock(
                         FabricBlockSettings.copy(Blocks.STONE).materialColor(MaterialColor.WHITE).lightLevel(15)
                                         .build());
-        public static final InvertedRedstoneLampBlock LANDING_LIGHT_RED = new InvertedRedstoneLampBlock(
+        public static final RedstoneLampBlock LANDING_LIGHT_RED = new RedstoneLampBlock(
                         FabricBlockSettings.copy(Blocks.STONE).materialColor(MaterialColor.RED).lightLevel(15).build());
-        public static final InvertedRedstoneLampBlock LANDING_LIGHT_YELLOW = new InvertedRedstoneLampBlock(
+        public static final RedstoneLampBlock LANDING_LIGHT_YELLOW = new RedstoneLampBlock(
                         FabricBlockSettings.copy(Blocks.STONE).materialColor(MaterialColor.YELLOW).lightLevel(15)
                                         .build());
-        public static final InvertedRedstoneLampBlock LANDING_LIGHT_BLUE = new InvertedRedstoneLampBlock(
+        public static final RedstoneLampBlock LANDING_LIGHT_BLUE = new RedstoneLampBlock(
                         FabricBlockSettings.copy(Blocks.STONE).materialColor(MaterialColor.BLUE).lightLevel(15)
                                         .build());
-        public static final InvertedRedstoneLampBlock LANDING_LIGHT_GREEN = new InvertedRedstoneLampBlock(
+        public static final RedstoneLampBlock LANDING_LIGHT_GREEN = new RedstoneLampBlock(
                         FabricBlockSettings.copy(Blocks.STONE).materialColor(MaterialColor.GREEN).lightLevel(15)
                                         .build());
 
@@ -55,7 +46,7 @@ public class PlaneBlocks {
 
         // Localizer
         public static final Block LOCALIZER_BLOCK = new LocalizerBlock(
-                        FabricBlockSettings.copy(Blocks.FURNACE).materialColor(MaterialColor.GRAY).build());
+                        FabricBlockSettings.copy(Blocks.PISTON).materialColor(MaterialColor.RED).build());
         public static BlockEntityType<LocalizerBlockEntity> LOCALIZER_BLOCK_ENTITY;
 
         public static void init() {
@@ -100,17 +91,7 @@ public class PlaneBlocks {
                 Registry.register(Registry.BLOCK, Util.getID("localizer_block"), LOCALIZER_BLOCK);
                 Registry.register(Registry.ITEM, Util.getID("localizer_block"), new BlockItem(LOCALIZER_BLOCK,
                                 new Item.Settings().group(PlaneItemGroup.MAIN_GROUP).maxCount(1)));
-                LOCALIZER_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY, Util.getID("localizer_block"),
+                LOCALIZER_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, Util.getID("localizer_block"),
                                 BlockEntityType.Builder.create(LocalizerBlockEntity::new, LOCALIZER_BLOCK).build(null));
-        }
-
-        public static void clientInit() {
-                BlockRenderLayerMap.INSTANCE.putBlock(RUNWAY_MARKING_WHITE, RenderLayer.getCutout());
-                BlockRenderLayerMap.INSTANCE.putBlock(RUNWAY_MARKING_THICK_WHITE, RenderLayer.getCutout());
-                BlockRenderLayerMap.INSTANCE.putBlock(RUNWAY_MARKING_YELLOW, RenderLayer.getCutout());
-                BlockRenderLayerMap.INSTANCE.putBlock(RUNWAY_MARKING_DASHED_YELLOW, RenderLayer.getCutout());
-
-                BlockEntityRendererRegistry.INSTANCE.register(LOCALIZER_BLOCK_ENTITY,
-                                LocalizerBlockEntityRenderer::new);
         }
 }

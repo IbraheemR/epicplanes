@@ -1,10 +1,8 @@
 package com.ibraheemrodrigues.epicplanes.block;
 
 import com.ibraheemrodrigues.epicplanes.block.entity.LocalizerBlockEntity;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
-import net.minecraft.block.BlockPlacementEnvironment;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;

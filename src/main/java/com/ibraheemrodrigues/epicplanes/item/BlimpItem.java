@@ -1,12 +1,8 @@
 package com.ibraheemrodrigues.epicplanes.item;
 
-import java.util.List;
-import java.util.function.Predicate;
-
 import com.google.common.base.Preconditions;
 import com.ibraheemrodrigues.epicplanes.entity.PlaneEntities;
 import com.ibraheemrodrigues.epicplanes.entity.blimp.BlimpEntity;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.vehicle.BoatEntity;
@@ -20,6 +16,9 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.RayTraceContext;
 import net.minecraft.world.World;
+
+import java.util.List;
+import java.util.function.Predicate;
 
 public class BlimpItem extends Item {
 
@@ -58,7 +57,7 @@ public class BlimpItem extends Item {
                 BlimpEntity blimpEntity = Preconditions.checkNotNull(PlaneEntities.BLIMP.create(world));
 
                 Vec3d pos = hitResult.getPos();
-                blimpEntity.setPosition(pos.x, pos.y, pos.z);
+                blimpEntity.updatePosition(pos.x, pos.y, pos.z);
                 blimpEntity.yaw = player.yaw;
 
                 blimpEntity.setBoatType(type);

@@ -2,34 +2,21 @@ package com.ibraheemrodrigues.epicplanes.mixin;
 
 import com.ibraheemrodrigues.epicplanes.block.entity.LocalizerBlockEntity;
 import com.ibraheemrodrigues.epicplanes.item.LocalizerReceiver;
-import net.minecraft.util.math.Direction;
-import org.spongepowered.asm.mixin.injection.Inject;
-
 import com.ibraheemrodrigues.epicplanes.item.PlaneItems;
-
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.render.BufferBuilderStorage;
-import net.minecraft.client.render.Camera;
-import net.minecraft.client.render.GameRenderer;
-import net.minecraft.client.render.LightmapTextureManager;
-import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.VertexConsumer;
-import net.minecraft.client.render.WorldRenderer;
-import net.minecraft.client.util.math.Matrix4f;
+import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.client.util.math.Vector3f;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.*;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(WorldRenderer.class)
 public class LocalizerWorldRendererMixin {
@@ -45,8 +32,8 @@ public class LocalizerWorldRendererMixin {
 
         @Inject(at = @At("HEAD"), method = "render")
         private void render(MatrixStack matrixStack, float tickDelta, long limitTime, boolean renderBlockOutline,
-                        Camera camera, GameRenderer gameRenderer, LightmapTextureManager lightmapTextureManager,
-                        Matrix4f matrix4f, CallbackInfo info) {
+                            Camera camera, GameRenderer gameRenderer, LightmapTextureManager lightmapTextureManager,
+                            Matrix4f matrix4f, CallbackInfo info) {
 
                 if (this.client.player.getStackInHand(Hand.MAIN_HAND).getItem() == PlaneItems.LOCALIZER_RECEIVER
                                 || this.client.player.getStackInHand(Hand.OFF_HAND)

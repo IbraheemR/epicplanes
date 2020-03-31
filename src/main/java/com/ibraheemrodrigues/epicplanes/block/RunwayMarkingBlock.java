@@ -1,15 +1,10 @@
 package com.ibraheemrodrigues.epicplanes.block;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.EntityContext;
+import net.minecraft.block.ShapeContext;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
@@ -23,6 +18,10 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
 public class RunwayMarkingBlock extends Block {
     public static final BooleanProperty CONNECTION_NORTH = BooleanProperty.of("north");
     public static final BooleanProperty CONNECTION_EAST = BooleanProperty.of("east");
@@ -33,47 +32,55 @@ public class RunwayMarkingBlock extends Block {
 
     public RunwayMarkingBlock(Block.Settings settings) {
         super(settings);
-        this.setDefaultState(
-                (BlockState) ((BlockState) ((BlockState) ((BlockState) ((BlockState) ((BlockState) this.stateManager
-                        .getDefaultState()).with(CONNECTION_NORTH, false)).with(CONNECTION_EAST, false))
-                                .with(CONNECTION_SOUTH, false)).with(CONNECTION_WEST, false)));
+
+
+        this.setDefaultState(this.getStateManager().getDefaultState()
+                        .with(CONNECTION_NORTH, false)
+                        .with(CONNECTION_SOUTH, false)
+                        .with(CONNECTION_EAST, false)
+                        .with(CONNECTION_WEST, false)
+        );
     }
 
-    public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, EntityContext ePos) {
+
+    @Override
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 1.0D, 16.0D);
     }
 
+    @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         BlockView blockView = ctx.getWorld();
-        BlockPos blockPos = ctx.getBlockPos();
-        return (BlockState) ((BlockState) ((BlockState) ((BlockState) this.getDefaultState().with(CONNECTION_WEST,
-                this.getRenderConnectionType(blockView, blockPos, Direction.WEST))).with(CONNECTION_EAST,
-                        this.getRenderConnectionType(blockView, blockPos, Direction.EAST))).with(CONNECTION_NORTH,
-                                this.getRenderConnectionType(blockView, blockPos, Direction.NORTH))).with(
-                                        CONNECTION_SOUTH,
-                                        this.getRenderConnectionType(blockView, blockPos, Direction.SOUTH));
+        BlockPos pos = ctx.getBlockPos();
+        return this.getDefaultState()
+                .with(CONNECTION_NORTH, this.shouldConnect(blockView, pos, Direction.NORTH))
+                .with(CONNECTION_SOUTH, this.shouldConnect(blockView, pos, Direction.SOUTH))
+                .with(CONNECTION_EAST, this.shouldConnect(blockView, pos, Direction.EAST))
+                .with(CONNECTION_WEST, this.shouldConnect(blockView, pos, Direction.WEST));
     }
 
+    @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction facing, BlockState neighborState,
             IWorld world, BlockPos pos, BlockPos neighborPos) {
         if (facing == Direction.DOWN || facing == Direction.UP) {
             return state;
         } else {
-            return (BlockState) ((BlockState) ((BlockState) ((BlockState) state.with(CONNECTION_WEST,
-                    this.getRenderConnectionType(world, pos, Direction.WEST))).with(CONNECTION_EAST,
-                            this.getRenderConnectionType(world, pos, Direction.EAST))).with(CONNECTION_NORTH,
-                                    this.getRenderConnectionType(world, pos, Direction.NORTH))).with(CONNECTION_SOUTH,
-                                            this.getRenderConnectionType(world, pos, Direction.SOUTH));
+            return this.getDefaultState()
+                    .with(CONNECTION_NORTH, this.shouldConnect(world, pos, Direction.NORTH))
+                    .with(CONNECTION_SOUTH, this.shouldConnect(world, pos, Direction.SOUTH))
+                    .with(CONNECTION_EAST, this.shouldConnect(world, pos, Direction.EAST))
+                    .with(CONNECTION_WEST, this.shouldConnect(world, pos, Direction.WEST));
 
         }
     }
 
-    private Boolean getRenderConnectionType(BlockView view, BlockPos pos, Direction dir) {
+    private Boolean shouldConnect(BlockView view, BlockPos pos, Direction dir) {
         Block a = view.getBlockState(pos).getBlock();
         Block b = view.getBlockState(pos.offset(dir)).getBlock();
         return a == b && b instanceof RunwayMarkingBlock;
     }
 
+    @Override
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
         BlockPos blockPos = pos.down();
         BlockState blockState = world.getBlockState(blockPos);
@@ -130,7 +137,7 @@ public class RunwayMarkingBlock extends Block {
             while (var6.hasNext()) {
                 direction3 = (Direction) var6.next();
                 BlockPos blockPos = pos.offset(direction3);
-                if (world.getBlockState(blockPos).isSimpleFullBlock(world, blockPos)) {
+                if (world.getBlockState(blockPos).isFullCube(world, blockPos)) {
                     this.updateNeighbors(world, blockPos.up());
                 } else {
                     this.updateNeighbors(world, blockPos.down());
@@ -166,7 +173,7 @@ public class RunwayMarkingBlock extends Block {
                 while (var10.hasNext()) {
                     direction3 = (Direction) var10.next();
                     BlockPos blockPos = pos.offset(direction3);
-                    if (world.getBlockState(blockPos).isSimpleFullBlock(world, blockPos)) {
+                    if (world.getBlockState(blockPos).isFullCube(world, blockPos)) {
                         this.updateNeighbors(world, blockPos.up());
                     } else {
                         this.updateNeighbors(world, blockPos.down());

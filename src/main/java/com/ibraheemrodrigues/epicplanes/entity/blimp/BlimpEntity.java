@@ -1,14 +1,11 @@
 package com.ibraheemrodrigues.epicplanes.entity.blimp;
 
 import com.ibraheemrodrigues.epicplanes.item.PlaneItems;
-
-
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
-
 import net.minecraft.world.World;
 
 public class BlimpEntity extends BoatEntity {
@@ -56,8 +53,6 @@ public class BlimpEntity extends BoatEntity {
             if (vel.y < 10) {
                 this.addVelocity(0, MathHelper.clamp(pitch * -0.0003F, 90 * -0.0005F, 90 * 0.0005F), 0);
             }
-        } else {
-            this.setVelocity(vel.x, 0, vel.z);
         }
 
         super.tick();
