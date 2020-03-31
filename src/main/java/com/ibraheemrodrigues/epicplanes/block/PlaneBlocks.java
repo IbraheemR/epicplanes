@@ -98,7 +98,7 @@ public class PlaneBlocks {
                 Registry.register(Registry.BLOCK, Util.getID("localizer_block"), LOCALIZER_BLOCK);
                 Registry.register(Registry.ITEM, Util.getID("localizer_block"), new BlockItem(LOCALIZER_BLOCK,
                                 new Item.Settings().group(PlaneItemGroup.MAIN_GROUP).maxCount(1)));
-                LOCALIZER_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY, Util.getID("localizer_block"),
+                LOCALIZER_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, Util.getID("localizer_block"),
                                 BlockEntityType.Builder.create(LocalizerBlockEntity::new, LOCALIZER_BLOCK).build(null));
         }
 
