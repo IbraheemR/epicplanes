@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": [
+    {
+      "item": "epicplanes:coal_iron_ingot"
+    }
+  ],
+  "result": "c:steel_ingot",
+  "experience": 1.0,
+  "cookingtime": 100
+}

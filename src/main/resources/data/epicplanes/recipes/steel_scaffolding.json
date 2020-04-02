@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PPP",
+    " R ",
+    "R R"
+  ],
+  "key": {
+    "P": {
+      "item": "c:steel_plate"
+    },
+    "R": {
+      "item": "c:steel_rod"
+    }
+  },
+  "result": {
+    "item": "epicplanes:steel_scaffolding",
+    "count": 16
+  }
+}
+

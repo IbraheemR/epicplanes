@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "bottom=true": { "model": "epicplanes:block/steel_scaffolding_bottom" },
+    "bottom=false": { "model": "epicplanes:block/steel_scaffolding" }
+  }
+}

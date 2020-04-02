@@ -27,7 +27,9 @@
   ],
   "depends": {
     "fabricloader": ">=0.4.0",
-    "fabric": "*"
+    "fabric": "*",
+    "cotton": "1.0.0-rc.7",
+    "cotton-resources": ">=1.5.1"
   },
   "suggests": {
     "flamingo": "*"

@@ -4,6 +4,7 @@ import com.ibraheemrodrigues.epicplanes.Util;
 import com.ibraheemrodrigues.epicplanes.block.entity.LocalizerBlockEntity;
 import com.ibraheemrodrigues.epicplanes.block.entity.LocalizerBlockEntityRenderer;
 import com.ibraheemrodrigues.epicplanes.item.PlaneItemGroup;
+import com.ibraheemrodrigues.epicplanes.item.SteelScaffoldingItem;
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegistry;
@@ -56,6 +57,10 @@ public class PlaneBlocks {
                         FabricBlockSettings.copy(Blocks.FURNACE).materialColor(MaterialColor.GRAY).build());
         public static BlockEntityType<LocalizerBlockEntity> LOCALIZER_BLOCK_ENTITY;
 
+        // Steel scaffolding
+        public static final Block STEEL_SCAFFOLD = new SteelScaffoldingBlock(FabricBlockSettings.of(Material.PART).hardness(1).dynamicBounds().nonOpaque().build());
+
+
         public static void init() {
                 Registry.register(Registry.BLOCK, Util.getID("balloon"), BALLOON_BLOCK);
                 Registry.register(Registry.ITEM, Util.getID("balloon"),
@@ -100,6 +105,9 @@ public class PlaneBlocks {
                                 new Item.Settings().group(PlaneItemGroup.MAIN_GROUP).maxCount(1)));
                 LOCALIZER_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, Util.getID("localizer_block"),
                                 BlockEntityType.Builder.create(LocalizerBlockEntity::new, LOCALIZER_BLOCK).build(null));
+
+                Registry.register(Registry.BLOCK, Util.getID("steel_scaffolding"), STEEL_SCAFFOLD);
+                Registry.register(Registry.ITEM, Util.getID("steel_scaffolding"), new SteelScaffoldingItem(STEEL_SCAFFOLD, new Item.Settings().group(PlaneItemGroup.MAIN_GROUP)));
         }
 
         public static void clientInit() {

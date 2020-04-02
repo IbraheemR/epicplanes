@@ -29,11 +29,9 @@ dependencies {
 	// Cotton
 	modImplementation ("io.github.cottonmc.cotton:cotton:${cotton_version}") {
 		exclude(group: "io.github.prospector.modmenu", module: "ModMenu")
-		exclude(group: "io.github.cottonmc:Jankson-Fabric:1.0.0+j1.1.2", module: "Jankson")
 	}
-	modImplementation  ("io.github.cottonmc:cotton-resources:${cotton_resources_version}") {
+	modImplementation ("io.github.cottonmc:cotton-resources:${cotton_resources_version}") {
 		exclude(group: "io.github.prospector.modmenu", module: "ModMenu")
-		exclude(group: "io.github.cottonmc:Jankson-Fabric:1.0.0+j1.1.2", module: "Jankson")
 	}
 
 }

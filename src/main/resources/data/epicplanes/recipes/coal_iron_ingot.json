@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "c:coal_dust"
+    },
+    {
+      "item": "c:coal_dust"
+    },
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "minecraft:clay_ball"
+    }
+  ],
+  "result": {
+    "item": "epicplanes:coal_iron_ingot",
+    "count": 1
+  }
+}

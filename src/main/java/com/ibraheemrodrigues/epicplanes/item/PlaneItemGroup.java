@@ -24,20 +24,17 @@ public class PlaneItemGroup {
         itemStacks.add(new ItemStack(PlaneBlocks.BALLOON_BLOCK));
 
         // New Line
+        itemStacks.add(new ItemStack(PlaneBlocks.STEEL_SCAFFOLD));
         itemStacks.add(new ItemStack(PlaneBlocks.ASPHALT_BLOCK));
         itemStacks.add(new ItemStack(PlaneBlocks.LANDING_LIGHT_WHITE));
         itemStacks.add(new ItemStack(PlaneBlocks.LANDING_LIGHT_YELLOW));
         itemStacks.add(new ItemStack(PlaneBlocks.LANDING_LIGHT_RED));
         itemStacks.add(new ItemStack(PlaneBlocks.LANDING_LIGHT_GREEN));
         itemStacks.add(new ItemStack(PlaneBlocks.LANDING_LIGHT_BLUE));
-        itemStacks.add(ItemStack.EMPTY);
-        itemStacks.add(new ItemStack(PlaneItems.LOCALIZER_RECEIVER));
-        itemStacks.add(new ItemStack(PlaneBlocks.LOCALIZER_BLOCK));
-
-
-        // New Line
         itemStacks.add(new ItemStack(PlaneBlocks.RUNWAY_MARKING_WHITE));
         itemStacks.add(new ItemStack(PlaneBlocks.RUNWAY_MARKING_THICK_WHITE));
+
+        // New line
         itemStacks.add(new ItemStack(PlaneBlocks.RUNWAY_MARKING_YELLOW));
         itemStacks.add(new ItemStack(PlaneBlocks.RUNWAY_MARKING_DASHED_YELLOW));
         itemStacks.add(ItemStack.EMPTY);
@@ -45,9 +42,24 @@ public class PlaneItemGroup {
         itemStacks.add(ItemStack.EMPTY);
         itemStacks.add(ItemStack.EMPTY);
         itemStacks.add(ItemStack.EMPTY);
+        itemStacks.add(ItemStack.EMPTY);
+        itemStacks.add(ItemStack.EMPTY);
 
         // New Line
+        itemStacks.add(new ItemStack(PlaneBlocks.LOCALIZER_BLOCK));
+        itemStacks.add(new ItemStack(PlaneItems.LOCALIZER_RECEIVER));
+        itemStacks.add(ItemStack.EMPTY);
+        itemStacks.add(ItemStack.EMPTY);
+        itemStacks.add(ItemStack.EMPTY);
+        itemStacks.add(ItemStack.EMPTY);
+        itemStacks.add(ItemStack.EMPTY);
+        itemStacks.add(ItemStack.EMPTY);
+        itemStacks.add(ItemStack.EMPTY);
+
+
         itemStacks.add(new ItemStack(PlaneItems.ANTENNA));
+        itemStacks.add(new ItemStack(PlaneItems.COAL_IRON_INGOT));
+
 
     }).build();
 
